@@ -33,18 +33,19 @@ const App = () => {
     <div className="App">
       <GlobalStyle />
       {/* {results} */}
-      <NavMenu>
-        <Switch>
-          <Route path="/newtrip" component={NewTrip} />
-
-          <Route path="/404" component={NotFound} />
-          <Route path="/" exact component={App} />
-          <Redirect to="/404" component={NotFound} />
-        </Switch>
-      </NavMenu>
-      {menuItems.map((item, i) => (
-        <Route key={i} path={`/${item.path}`} component={mapping[item.path]} />
-      ))}
+      <NavMenu />
+      <Switch>
+        {menuItems.map((item, i) => (
+          <Route
+            key={i}
+            path={`/${item.path}`}
+            component={mapping[item.path]}
+          />
+        ))}
+        <Route path="/404" component={NotFound} />
+        <Route path="/" exact component={App} />
+        <Redirect to="/404" component={NotFound} />
+      </Switch>
     </div>
   );
 };
