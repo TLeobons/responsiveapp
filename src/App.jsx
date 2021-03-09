@@ -1,51 +1,52 @@
-import {useEffect, useState} from 'react'
-import {Switch, Route, Redirect} from 'react-router-dom'
-import axios from 'axios'
+import { useEffect, useState } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import axios from 'axios';
 
-import GlobalStyle from 'style/global'
-import {menuItems} from 'menus'
-import NotFound from 'components/404'
-import NewTrip from 'components/NewTrip'
-import Trips from 'components/Trips'
-import NavMenu from 'components/NavMenu'
+import GlobalStyle from 'style/global';
+import { menuItems } from 'menus';
+import NotFound from 'components/404';
+import NewTrip from 'components/NewTrip';
+import Trips from 'components/Trips';
+import NavMenu from 'components/NavMenu';
 
 const App = () => {
-
-  const [results, setResults] = useState([])
+  const [results, setResults] = useState([]);
 
   const mapping = {
     newtrip: NewTrip,
-    trips: Trips
-  }
+    trips: Trips,
+  };
 
   useEffect(() => {
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
   const fetchData = async () => {
-    const {data} = await axios.get('https://task-devel.cleevio-vercel.vercel.app/api/country')
-    setResults(data)
-    console.log('fetched', data)
-  }
+    const { data } = await axios.get(
+      'https://task-devel.cleevio-vercel.vercel.app/api/country'
+    );
+    setResults(data);
+    console.log('fetched', data);
+  };
 
   return (
     <div className="App">
-      <GlobalStyle/>
-        {/* {results} */}
-        <NavMenu>
+      <GlobalStyle />
+      {/* {results} */}
+      <NavMenu>
         <Switch>
-          {menuItems.map((item, i) => (
-            <Route key={i} path={`/${item.path}`} component={mapping[item.path]}/>
-            
-          ))}
+          <Route path="/newtrip" component={NewTrip} />
+
           <Route path="/404" component={NotFound} />
           <Route path="/" exact component={App} />
           <Redirect to="/404" component={NotFound} />
         </Switch>
-        </NavMenu>
-
+      </NavMenu>
+      {menuItems.map((item, i) => (
+        <Route key={i} path={`/${item.path}`} component={mapping[item.path]} />
+      ))}
     </div>
   );
-}
+};
 
 export default App;
