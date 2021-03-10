@@ -5,7 +5,7 @@ const Trips = () => {
   return (
     <AllTrips>
       <Main>
-        Test main
+        <Heading>Your trips</Heading>
       </Main>
       <Tips/>
     </AllTrips>
@@ -20,4 +20,8 @@ const AllTrips = styled.section`
 const Main = styled.main`
   height: 100vh;
   width: 500px;
+`
+const Heading = styled.h1`
+  padding: 2rem;
+  border-bottom: 1px solid var(--grey)
 `
