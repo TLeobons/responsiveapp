@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import axios from 'axios';
+import { Switch, Route, Redirect } from 'react-router-dom'
+import styled from 'styled-components'
 
 import GlobalStyle from 'style/global';
 import { menuItems } from 'menus';
@@ -10,29 +9,15 @@ import Trips from 'components/Trips';
 import NavMenu from 'components/NavMenu';
 
 const App = () => {
-  const [results, setResults] = useState([]);
 
   const mapping = {
     newtrip: NewTrip,
     trips: Trips,
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    const { data } = await axios.get(
-      'https://task-devel.cleevio-vercel.vercel.app/api/country'
-    );
-    setResults(data);
-    console.log('fetched', data);
-  };
+  }
 
   return (
-    <div className="App">
+    <Container className="App">
       <GlobalStyle />
-      {/* {results} */}
       <NavMenu />
       <Switch>
         {menuItems.map((item, i) => (
@@ -46,8 +31,12 @@ const App = () => {
         <Route path="/" exact component={App} />
         <Redirect to="/404" component={NotFound} />
       </Switch>
-    </div>
+    </Container>
   );
-};
+}
 
-export default App;
+export default App
+
+const Container = styled.main`
+  display: flex;
+`

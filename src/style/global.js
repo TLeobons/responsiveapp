@@ -8,8 +8,12 @@ const GlobalStyle = createGlobalStyle`
   }
 
   :root {
-    font-family: 'Open Sans', sans-serif;
-    font-size:62.5%;
+      --accent: #FED949;
+      --dark-grey: #97999B;
+      --grey: #F9F9FA;
+      --light-grey: #D0D0CE;
+      font-family: 'Open Sans', sans-serif;
+      font-size:62.5%;
   }
 
   a {
