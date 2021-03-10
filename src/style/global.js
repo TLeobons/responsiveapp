@@ -16,8 +16,16 @@ const GlobalStyle = createGlobalStyle`
       font-size:62.5%;
   }
 
+  ::placeholder {
+    color:var(--light-grey)
+  }
+
   a {
     text-decoration:none;
+  }
+
+  button {
+    border: none;
   }
 
   li {
