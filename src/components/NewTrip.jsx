@@ -33,6 +33,10 @@ const NewTrip = () => {
     console.log('fetched', sortedData);
   }
 
+  const handleChange = e => {
+    const name = `set${e}`
+  }
+
   return (
     <Container>
       <Main>
@@ -53,30 +57,40 @@ const NewTrip = () => {
 
         <FormGroup>
           {/* TODO: change placeholder on date picker and style it */}
-          <label for='start-date'>Start date</label>
-          <input id='start-date' type='date' placeholder='dd.mm.year'/>
+          <Label for='startDate'>Start date</Label>
+          <input id='startDate' type='date' placeholder='dd.mm.year' name='startDate'/>
 
-          <label for='end-date'>End date</label>
-          <input id='end-date' type='date'/>
+          <Label for='endDate'>End date</Label>
+          <Input id='endDate' type='date' name='endDate'/>
 
         </FormGroup>
 
         <FormGroup>
           
-          <label for='company'>Company name</label>
-          <input id='company' name='company' placeholder='Type here...'/>
+          <Label for='company'>Company name</Label>
+          <Input id='company' name='company' placeholder='Type here...'
+            onChange={setCompany}
+          />
 
-          <label for='street'>Street</label>
-          <input id='street' name='street' placeholder='Type here...'/>
+          <Label for='street'>Street</Label>
+          <Input id='street' name='street' placeholder='Type here...'
+            onChange={setStreet}
+          />
 
-          <label for='street-number'>Street number</label>
-          <input id='street-number' name='street-number' placeholder='Type here...'/>
+          <Label for='streetNumber'>Street number</Label>
+          <Input id='streetNumber' name='streetNumber' placeholder='Type here...'
+            onChange={setStreetNumber}
+          />
 
-          <label for='city'>City</label>
-          <input id='city' name='city' placeholder='Type here...'/>
+          <Label for='city'>City</Label>
+          <Input id='city' name='city' placeholder='Type here...'
+            onChange={setCity}
+          />
 
-          <label for='zip-code'>Zip code</label>
-          <input id='zip-code' name='zip-code' placeholder='Type here...'/>
+          <Label for='zipCode'>Zip code</Label>
+          <Input id='zipCode' name='zipCode' placeholder='Type here...'
+            onChange={e => setZipCode(e.target.value)}
+          />
 
         </FormGroup>
 
@@ -88,6 +102,8 @@ const NewTrip = () => {
           {/* <input id='tested-covid' type='radio'>No</input> */}
 
         </FormGroup>
+
+        <Button type='submit'>Save</Button>
 
       </Form>
 
@@ -126,15 +142,16 @@ const FormGroup = styled.div`
   flex-direction: column;
   padding: 1rem;
   border-radius: 5px;
-
-  > label {
-    padding-bottom: .75rem;
-  }
-
-  > input {
-    padding: .75rem;
+`
+const Label = styled.label`
+  padding-bottom: .75rem;
+`
+const Input = styled.input`
+  padding: .75rem;
     border-radius: 5px;
     border: none;
     margin-bottom: 1.5rem;
-  }
+`
+const Button = styled.button`
+
 `

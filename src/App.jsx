@@ -6,7 +6,7 @@ import { menuItems } from 'menus';
 import NotFound from 'components/404';
 import NewTrip from 'components/NewTrip';
 import Trips from 'components/Trips';
-import NavMenu from 'components/NavMenu';
+import NavMenu from 'components/NavMenu'
 
 const App = () => {
 
